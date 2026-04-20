@@ -34,9 +34,9 @@ GitHub Repo：<https://github.com/JosephKuo0402/oral-dashboard-frontend>
 - SPMSQ（護理師）
 - MNA（營養師）
 - 吞嚥能力篩檢（照服員）
-- 30 秒吞嚥測驗（口語師）
+- 30 秒吞嚥測驗
 
-> 依需求：**PA-TA-KA 已在原型中移除**（不做硬體/語音辨識）。
+
 
 ### 分頁 D｜綜合分析報告
 - 風險紅黃綠燈判定（示意）
