@@ -65,16 +65,6 @@ npm run dev
 
 用瀏覽器開啟該網址即可。
 
----
 
-## 資料保存方式（重要）
-- 本原型所有新增/修改會存到瀏覽器 **localStorage**
-- 若要回到初始假資料，可以在瀏覽器清除該站台的 localStorage（或開無痕視窗）
 
----
 
-## （可選）部署到 GitHub Pages
-
-如果你希望在 GitHub 上直接打開網頁（不用本機跑 `npm run dev`），可以使用 GitHub Pages 部署。
-
-我可以幫你補上部署設定（例如 GitHub Actions + Pages），你只要跟我說「要用 Pages」。
