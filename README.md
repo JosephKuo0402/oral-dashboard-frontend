@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# 高齡吞嚥風險防範｜口腔功能統合儀表板（前端原型）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+此專案為 **Vite + React + TypeScript** 製作的「可直接操作/瀏覽」前端原型，用於呈現：住民紅黃綠燈風險儀表板、分頁 A~D 的基本資料與量表輸入、以及趨勢圖。
 
-Currently, two official plugins are available:
+- 不含後端 / controller
+- 不含硬體串接
+- 不含語音辨識
+- 以 **假資料 + localStorage** 示意資料呈現與操作流程
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+GitHub Repo：<https://github.com/JosephKuo0402/oral-dashboard-frontend>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 功能與分頁
 
-## Expanding the ESLint configuration
+### Dashboard（首頁）
+- 住民清單總覽（床號/姓名）
+- 風險紅黃綠燈（示意演算法）
+- 搜尋與風險篩選
+- 風險分佈圖
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 分頁 A｜系統管理
+1. 工作人員帳號管理（新增/停用）
+2. 系統使用回饋（可送出回饋、狀態切換）
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 分頁 B｜住民基本資料
+1. 基本資料 / 病歷摘要 / 口腔檢查表（可「選檔」上傳，原型僅記錄檔名）
+2. 目前飲食狀況
+   - 進食方式：經口 / 鼻餵管 / 胃造廔
+   - 餐食類型：普通 / 軟 / 流質
+   - 口語治療師、營養師建議事項
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 分頁 C｜評估量表
+- SPMSQ（護理師）
+- MNA（營養師）
+- 吞嚥能力篩檢（照服員）
+- 30 秒吞嚥測驗（口語師）
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+> 依需求：**PA-TA-KA 已在原型中移除**（不做硬體/語音辨識）。
+
+### 分頁 D｜綜合分析報告
+- 風險紅黃綠燈判定（示意）
+- 餐食建議（普通/軟/流質）
+- 每月評估趨勢圖（體重 + 風險等級）
+- 醫師建議/轉介（示意保存）
+
+---
+
+## 如何在本機啟動
+
+### 1) 安裝套件（第一次才需要）
+```bash
+cd "/mnt/c/Users/Administrator/口腔訓練/oral-dashboard-frontend"
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2) 啟動開發伺服器
+```bash
+npm run dev
 ```
+
+### 3) 打開瀏覽器
+終端機會顯示類似：
+- `Local: http://localhost:5173/`
+
+用瀏覽器開啟該網址即可。
+
+---
+
+## 資料保存方式（重要）
+- 本原型所有新增/修改會存到瀏覽器 **localStorage**
+- 若要回到初始假資料，可以在瀏覽器清除該站台的 localStorage（或開無痕視窗）
+
+---
+
+## （可選）部署到 GitHub Pages
+
+如果你希望在 GitHub 上直接打開網頁（不用本機跑 `npm run dev`），可以使用 GitHub Pages 部署。
+
+我可以幫你補上部署設定（例如 GitHub Actions + Pages），你只要跟我說「要用 Pages」。
