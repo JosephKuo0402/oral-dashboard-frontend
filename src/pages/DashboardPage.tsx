@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { ResidentAvatar } from '../components/ResidentAvatar'
 import { RiskLight } from '../components/RiskLight'
@@ -12,6 +12,7 @@ type SortMode = 'bed' | 'risk'
 
 export default function DashboardPage() {
   const { state, dispatch } = useStore()
+  const navigate = useNavigate()
   const [q, setQ] = useState('')
   const [riskFilter, setRiskFilter] = useState<RiskLevel | 'all'>('all')
   const [sortMode, setSortMode] = useState<SortMode>('bed')
@@ -137,8 +138,11 @@ export default function DashboardPage() {
                   <td>
                     <button
                       className="link"
-                      onClick={() => dispatch({ type: 'select_resident', id: resident.id })}
-                      title="切換為此住民"
+                      onClick={() => {
+                        dispatch({ type: 'select_resident', id: resident.id })
+                        navigate('/residents')
+                      }}
+                      title="檢視住民基本資料"
                     >
                       {resident.name}
                     </button>
