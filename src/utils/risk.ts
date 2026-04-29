@@ -26,14 +26,19 @@ export function computeRiskLevel(a?: AssessmentRecord): RiskLevel {
   }
 
   if (a.swallowScreen) {
-    const flags = [
-      a.swallowScreen.coughWhenDrinking,
-      a.swallowScreen.wetVoice,
-      a.swallowScreen.chokingHistory,
-      a.swallowScreen.needsAssistFeeding,
-    ].filter(Boolean).length
-    if (flags >= 3) score += 2
-    else if (flags >= 1) score += 1
+    if (typeof a.swallowScreen.total === 'number') {
+      if (a.swallowScreen.total >= 3) score += 2
+      else if (a.swallowScreen.total >= 1) score += 1
+    } else {
+      const flags = [
+        a.swallowScreen.coughWhenDrinking,
+        a.swallowScreen.wetVoice,
+        a.swallowScreen.chokingHistory,
+        a.swallowScreen.needsAssistFeeding,
+      ].filter(Boolean).length
+      if (flags >= 3) score += 2
+      else if (flags >= 1) score += 1
+    }
   }
 
   if (a.swallow30s) {
