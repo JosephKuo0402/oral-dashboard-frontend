@@ -43,16 +43,16 @@ export default function AssessmentsPage() {
         right={
           <div className="seg">
             <button className={tab === 'spmsq' ? 'seg__btn seg__btn--on' : 'seg__btn'} onClick={() => setTab('spmsq')}>
-              1. SPMSQ（護理師）
+              1. SPMSQ
             </button>
             <button className={tab === 'mna' ? 'seg__btn seg__btn--on' : 'seg__btn'} onClick={() => setTab('mna')}>
-              2. MNA（營養師）
+              2. MNA
             </button>
             <button className={tab === 'screen' ? 'seg__btn seg__btn--on' : 'seg__btn'} onClick={() => setTab('screen')}>
-              3. 吞嚥篩檢（照服員）
+              3. 吞嚥篩檢
             </button>
             <button className={tab === '30s' ? 'seg__btn seg__btn--on' : 'seg__btn'} onClick={() => setTab('30s')}>
-              4. 30 秒吞嚥（口語師）
+              4. 30 秒吞嚥
             </button>
           </div>
         }
@@ -72,9 +72,9 @@ export default function AssessmentsPage() {
       <section className="card">
         <div className="card__title">本次評估輸入</div>
         {tab === 'spmsq' ? (
-          <SPMSQForm defaultErrors={latest?.spmsqErrors} onSubmit={(d) => savePatch(d)} />
+          <SPMSQForm defaultValue={latest} onSubmit={(d) => savePatch(d)} />
         ) : tab === 'mna' ? (
-          <MNAForm defaultScore={latest?.mnaScore} onSubmit={(d) => savePatch(d)} />
+          <MNAForm defaultValue={latest} onSubmit={(d) => savePatch(d)} />
         ) : tab === 'screen' ? (
           <SwallowScreenForm defaultValue={latest?.swallowScreen} onSubmit={(d) => savePatch(d)} />
         ) : (

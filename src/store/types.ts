@@ -28,14 +28,38 @@ export type AssessmentRecord = {
   weightKg?: number
 
   spmsqErrors?: number // 0-10
+  spmsqDetail?: {
+    hasTelephone?: boolean
+    answers?: string[]
+    wrong?: boolean[]
+  }
   mnaScore?: number // 0-14 simplified
+  mnaDetail?: {
+    appetite?: number
+    weightLoss?: number
+    mobility?: number
+    stressOrAcuteDisease?: number
+    neuropsychologicalProblems?: number
+    bmi?: number
+    total?: number
+  }
   swallowScreen?: {
+    // EAT-10
+    items?: number[] // 10 items, each 0-4
+    total?: number
+    // legacy fields
     coughWhenDrinking?: boolean
     wetVoice?: boolean
     chokingHistory?: boolean
     needsAssistFeeding?: boolean
   }
   swallow30s?: {
+    preChecks?: {
+      uprightSeated?: boolean
+      moistenMouth?: boolean
+      tongueAndLarynxPositioned?: boolean
+      timed30s?: boolean
+    }
     swallows?: number
     cough?: boolean
   }
