@@ -41,6 +41,7 @@ export default function SystemPage() {
   return (
     <div className="page">
       <Topbar
+        showResidentSelector={false}
         right={
           <div className="seg">
             <button className={tab === 'staff' ? 'seg__btn seg__btn--on' : 'seg__btn'} onClick={() => setTab('staff')}>
